@@ -1,3 +1,18 @@
+@php
+    $user = auth()->user();
+    $roleLabel = match(true) {
+        $user->isAdmin() => 'Administrator',
+        $user->isDosen() => 'Dosen',
+        $user->isMahasiswa() => 'Mahasiswa',
+        default => 'Pengguna',
+    };
+    $roleBadge = match(true) {
+        $user->isAdmin() => 'Super Admin',
+        $user->isDosen() => 'Dosen',
+        $user->isMahasiswa() => 'Mahasiswa',
+        default => '—',
+    };
+@endphp
             <header
                 class="sticky top-0 z-10 bg-white border-b border-slate-200 px-4 lg:px-8 h-16 flex items-center justify-between gap-4">
 
@@ -19,18 +34,10 @@
 
                 <!-- Right -->
                 <div class="flex items-center gap-2 lg:gap-4">
-                    <!-- Kalender -->
-                    <div
-                        class="hidden md:flex items-center gap-2 bg-slate-50 border border-slate-200 px-3 py-1.5 text-xs text-slate-600">
-                        <i class="fa-regular fa-calendar text-slate-500"></i>
-                        <span>Semester Genap 2025/2026</span>
-                    </div>
-
                     <!-- Notifikasi -->
                     <button
                         class="relative w-9 h-9 flex items-center justify-center text-slate-500 hover:text-slate-600 hover:bg-slate-50 transition-all duration-200 border border-transparent hover:border-slate-100">
                         <i class="fa-regular fa-bell text-base"></i>
-                        <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 border border-white"></span>
                     </button>
 
                     <!-- User -->
@@ -39,10 +46,9 @@
                             <i class="fa-solid fa-user text-white text-xs"></i>
                         </div>
                         <div class="hidden md:block">
-                            <p class="text-slate-800 font-semibold text-xs">Admin Akademik</p>
-                            <p class="text-slate-400 text-xs">Super Admin</p>
+                            <p class="text-slate-800 font-semibold text-xs">{{ $user->name }}</p>
+                            <p class="text-slate-400 text-xs">{{ $roleBadge }}</p>
                         </div>
-                        <i class="fa-solid fa-chevron-down text-slate-400 text-xs hidden md:block"></i>
                     </div>
                 </div>
             </header>

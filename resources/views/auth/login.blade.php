@@ -88,7 +88,21 @@
               Masukkan kredensial Anda untuk melanjutkan ke halaman ini.
             </p>
 
-            <form class="mt-9 space-y-6" novalidate>
+            @if ($errors->any())
+              <div class="mt-6 p-4 border border-red-300 bg-red-50 text-red-700 text-sm">
+                {{ $errors->first('identifier') }}
+              </div>
+            @endif
+
+            @if (session('status'))
+              <div class="mt-6 p-4 border border-green-300 bg-green-50 text-green-700 text-sm">
+                {{ session('status') }}
+              </div>
+            @endif
+
+            <form method="POST" action="{{ route('login') }}" class="mt-9 space-y-6">
+              @csrf
+
               <div>
                 <label for="identifier" class="block text-[12px] tracking-[0.15em] uppercase text-stone-400 mb-2">
                   NIM / Username
@@ -97,8 +111,11 @@
                   id="identifier"
                   type="text"
                   name="identifier"
+                  value="{{ old('identifier') }}"
                   placeholder="Masukkan NIM atau username"
-                  class="w-full border border-stone-300 bg-white px-4 py-3 text-[15px] text-stone-900 placeholder-stone-400 focus:outline-none focus:border-stone-900 transition-colors duration-300"
+                  class="w-full border border-stone-300 bg-white px-4 py-3 text-[15px] text-stone-900 placeholder-stone-400 focus:outline-none focus:border-stone-900 transition-colors duration-300 @error('identifier') border-red-400 @enderror"
+                  autofocus
+                  autocomplete="username"
                 >
               </div>
 
@@ -107,24 +124,24 @@
                   <label for="password" class="block text-[12px] tracking-[0.15em] uppercase text-stone-400">
                     Kata Sandi
                   </label>
-                  <a href="#" class="text-[12px] text-amber-700 hover:text-stone-900 transition-colors duration-300">Lupa?</a>
                 </div>
                 <input
                   id="password"
                   type="password"
                   name="password"
                   placeholder="&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;"
-                  class="w-full border border-stone-300 bg-white px-4 py-3 text-[15px] text-stone-900 placeholder-stone-400 focus:outline-none focus:border-stone-900 transition-colors duration-300"
+                  class="w-full border border-stone-300 bg-white px-4 py-3 text-[15px] text-stone-900 placeholder-stone-400 focus:outline-none focus:border-stone-900 transition-colors duration-300 @error('password') border-red-400 @enderror"
+                  autocomplete="current-password"
                 >
               </div>
 
-              {{-- <label class="flex items-center gap-3 cursor-pointer group">
+              <label class="flex items-center gap-3 cursor-pointer group">
                 <input type="checkbox" name="remember" class="peer sr-only">
                 <span class="w-4 h-4 border border-stone-300 flex items-center justify-center peer-checked:bg-stone-900 peer-checked:border-stone-900 transition-colors duration-300">
                   <span class="w-2 h-2 bg-stone-50 scale-0 peer-checked:scale-100 transition-transform duration-200"></span>
                 </span>
                 <span class="text-sm text-stone-500 group-hover:text-stone-900 transition-colors duration-300">Ingat saya di perangkat ini</span>
-              </label> --}}
+              </label>
 
               <button
                 type="submit"
@@ -134,13 +151,6 @@
                 <span class="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
               </button>
             </form>
-
-            <p class="mt-8 text-sm text-stone-500">
-              Belum memiliki akun?
-              <a href="register.html" class="text-stone-900 font-medium hover:text-amber-700 transition-colors duration-300 underline decoration-stone-300 hover:decoration-amber-700 underline-offset-4">
-                Daftar di sini
-              </a>
-            </p>
           </div>
         </div>
 

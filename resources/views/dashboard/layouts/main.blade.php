@@ -70,6 +70,7 @@
 
 <body class="bg-slate-100 font-sans text-slate-800 antialiased">
 
+    <x-app-popup/>
     <!-- ═══════════════════════════════════════════════
      MOBILE OVERLAY (sidebar toggle)
 ════════════════════════════════════════════════ -->
