@@ -100,13 +100,7 @@
                             class="absolute left-0 -bottom-0.5 h-px w-full bg-stone-900 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
                     </a>
                 </li>
-                <li>
-                    <a href="/register" class="relative py-2 hover:text-stone-900 transition-colors duration-300 group">
-                        Register
-                        <span
-                            class="absolute left-0 -bottom-0.5 h-px w-full bg-stone-900 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
-                    </a>
-                </li>
+
             </ul>
             <a href="#informasi"
                 class="sm:hidden text-[13px] font-medium text-stone-500 hover:text-stone-900 transition-colors duration-300">Menu</a>

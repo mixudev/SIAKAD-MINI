@@ -15,8 +15,8 @@ class SemesterSeeder extends Seeder
             'tipe' => 'ganjil',
             'tanggal_mulai' => '2024-08-01',
             'tanggal_selesai' => '2024-12-30',
-            'krs_mulai' => '2024-07-15',
-            'krs_selesai' => '2024-08-15',
+            'krs_mulai' => now()->subDays(30)->format('Y-m-d'),
+            'krs_selesai' => now()->addDays(30)->format('Y-m-d'),
             'is_active' => true,
         ]);
     }

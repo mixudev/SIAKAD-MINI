@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
             MataKuliahSeeder::class,
             SemesterSeeder::class,
             KelasMatkulSeeder::class,
+            KrsSeeder::class,
+            NilaiSeeder::class,
         ]);
     }
 }
