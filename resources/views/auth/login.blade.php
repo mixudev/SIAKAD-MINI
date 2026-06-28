@@ -51,7 +51,7 @@
         <!-- Kiri: gambar penuh -->
         <div class="relative hidden lg:block min-h-[440px] overflow-hidden">
           <img
-            src="https://source.unsplash.com/featured/1200x1600?university,campus,architecture"
+            src="{{ asset ('assets/img/baground-1.jpg') }}"
             alt="Suasana kampus dan ruang belajar"
             class="absolute inset-0 w-full h-full object-cover"
           >
@@ -61,7 +61,7 @@
             <div class="w-10 h-px bg-amber-500 animate-drawLine origin-left"></div>
 
             <div class="opacity-0 animate-fadeInUp [animation-delay:150ms]">
-              <p class="text-[12px] tracking-[0.2em] uppercase text-stone-200 mb-4">Halaman Umum &mdash; 2026</p>
+              <p class="text-[12px] tracking-[0.2em] uppercase text-stone-200 mb-4">SIAKAD &mdash; 2026</p>
               <h2 class="font-serif text-4xl font-medium tracking-tight leading-snug max-w-sm">
                 Struktur yang tenang untuk setiap sesi.
               </h2>
@@ -74,7 +74,7 @@
           <div class="w-full max-w-sm mx-auto opacity-0 animate-fadeInUp [animation-delay:100ms]">
 
             <a href="index.html" class="text-[16px] font-semibold tracking-[0.08em] text-stone-900 uppercase hover:text-amber-700 transition-colors duration-300">
-              SIAKAD <span class="text-amber-700">Mini</span>
+              SIAKAD <span class="text-amber-700">APPS</span>
             </a>
 
             {{-- <p class="flex items-center gap-3 text-[12px] tracking-[0.2em] uppercase text-stone-400 mt-10 mb-4">

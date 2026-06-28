@@ -33,28 +33,28 @@
     'iconColor' => 'indigo',
 ])
 
-@php
-    $maxWidthClass = [
-        'sm' => 'max-w-sm',
-        'md' => 'max-w-md',
-        'lg' => 'max-w-lg',
-        'xl' => 'max-w-xl',
-        '2xl' => 'max-w-2xl',
-        '3xl' => 'max-w-3xl',
-        '4xl' => 'max-w-4xl',
-        '5xl' => 'max-w-5xl',
-        '6xl' => 'max-w-6xl',
-        'full' => 'max-w-full m-4',
-    ][$maxWidth] ?? 'max-w-md';
+    @php
+        $maxWidthClass = [
+            'sm' => 'max-w-sm',
+            'md' => 'max-w-md',
+            'lg' => 'max-w-lg',
+            'xl' => 'max-w-xl',
+            '2xl' => 'max-w-2xl',
+            '3xl' => 'max-w-3xl',
+            '4xl' => 'max-w-4xl',
+            '5xl' => 'max-w-5xl',
+            '6xl' => 'max-w-6xl',
+            'full' => 'max-w-full m-4',
+        ][$maxWidth] ?? 'max-w-md';
 
-    $iconMap = [
-        'indigo'  => ['bg' => 'bg-indigo-100 dark:bg-indigo-500/10', 'text' => 'text-indigo-600 dark:text-indigo-400', 'ring' => 'ring-indigo-100 dark:ring-indigo-500/20'],
-        'red'     => ['bg' => 'bg-red-100 dark:bg-red-500/10', 'text' => 'text-red-600 dark:text-red-400', 'ring' => 'ring-red-100 dark:ring-red-500/20'],
-        'emerald' => ['bg' => 'bg-emerald-100 dark:bg-emerald-500/10', 'text' => 'text-emerald-600 dark:text-emerald-400', 'ring' => 'ring-emerald-100 dark:ring-emerald-500/20'],
-        'amber'   => ['bg' => 'bg-amber-100 dark:bg-amber-500/10', 'text' => 'text-amber-600 dark:text-amber-400', 'ring' => 'ring-amber-100 dark:ring-amber-500/20'],
-    ];
-    $c = $iconMap[$iconColor] ?? $iconMap['indigo'];
-@endphp
+        $iconMap = [
+            'indigo'  => ['bg' => 'bg-indigo-100', 'text' => 'text-indigo-600', 'ring' => 'ring-indigo-100'],
+            'red'     => ['bg' => 'bg-red-100', 'text' => 'text-red-600', 'ring' => 'ring-red-100'],
+            'emerald' => ['bg' => 'bg-emerald-100', 'text' => 'text-emerald-600', 'ring' => 'ring-emerald-100'],
+            'amber'   => ['bg' => 'bg-amber-100', 'text' => 'text-amber-600', 'ring' => 'ring-amber-100'],
+        ];
+        $c = $iconMap[$iconColor] ?? $iconMap['indigo'];
+    @endphp
 
 @once
 <style>
@@ -83,46 +83,51 @@
         padding: 0.625rem 0.75rem;
         font-size: 0.875rem;
         border-radius: 0;
-        background-color: #f8fafc;
-        border: 1px solid #e2e8f0;
+        background-color: #ffffff;
+        border: 1.5px solid #cbd5e1;
         color: #1e293b;
         outline: none;
         transition: all 0.2s;
         font-family: inherit;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
     }
-    .dark .modal-body input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
-    .dark .modal-body select,
-    .dark .modal-body textarea {
-        background-color: #18181f; /* matching dark theme */
-        border-color: rgba(255, 255, 255, 0.08);
-        color: #e2e8f0;
+    .modal-body input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):hover,
+    .modal-body select:hover,
+    .modal-body textarea:hover {
+        border-color: #94a3b8;
     }
     .modal-body input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus,
     .modal-body select:focus,
     .modal-body textarea:focus {
-        border-color: #6366f1;
-        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+        border-color: #4f46e5;
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15), inset 0 1px 2px rgba(0, 0, 0, 0.03);
+        background-color: #ffffff;
     }
     .modal-body input::placeholder, .modal-body textarea::placeholder { color: #94a3b8; }
 
+    /* Select specific */
+    .modal-body select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        padding-right: 2.25rem;
+        appearance: none;
+    }
+
     /* File Input Styling */
     .modal-body input[type="file"] { width: 100%; font-size: 0.875rem; color: #64748b; cursor: pointer; }
-    .dark .modal-body input[type="file"] { color: #94a3b8; }
     .modal-body input[type="file"]::file-selector-button {
         margin-right: 1rem; padding: 0.5rem 1rem; border-radius: 0; border: none;
         font-size: 0.75rem; font-weight: 600; background-color: #eef2ff; color: #4f46e5;
         cursor: pointer; transition: all 0.2s;
     }
     .modal-body input[type="file"]::file-selector-button:hover { background-color: #e0e7ff; }
-    .dark .modal-body input[type="file"]::file-selector-button { background-color: rgba(99, 102, 241, 0.1); color: #818cf8; }
-    .dark .modal-body input[type="file"]::file-selector-button:hover { background-color: rgba(99, 102, 241, 0.2); }
 
     /* Label Styling */
     .modal-body label {
-        display: block; font-size: 0.6875rem; font-weight: 600; color: #64748b;
+        display: block; font-size: 0.6875rem; font-weight: 600; color: #475569;
         text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.375rem;
     }
-    .dark .modal-body label { color: #94a3b8; }
 
     /* --- Elegant Action Buttons (Firm/Tegas, No Glow) --- */
     .modal-btn-primary {
@@ -148,8 +153,6 @@
     }
     .modal-btn-cancel:hover { background-color: #e2e8f0; }
     .modal-btn-cancel:active { transform: scale(0.98); }
-    .dark .modal-btn-cancel { background-color: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1); color: #e2e8f0; }
-    .dark .modal-btn-cancel:hover { background-color: rgba(255, 255, 255, 0.1); }
 
 
 </style>
@@ -163,13 +166,13 @@
     data-modal-id="{{ $id }}"
 >
     <!-- Simple Backdrop -->
-    <div class="modal-backdrop absolute inset-0 bg-black/50 backdrop-blur-sm cursor-pointer"></div>
+    <div class="modal-backdrop fixed inset-0 bg-black/50 backdrop-blur-sm cursor-pointer"></div>
 
     <!-- Modal Card -->
-    <div class="modal-box relative w-full {{ $maxWidthClass }} mx-auto overflow-hidden bg-white border border-black/[0.06] shadow-[0_0_0_1px_rgba(0,0,0,0.03),0_20px_60px_-10px_rgba(0,0,0,0.18),0_8px_24px_-4px_rgba(0,0,0,0.08)] dark:bg-[#18181f] dark:border-white/[0.07] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_20px_60px_-10px_rgba(0,0,0,0.7),0_8px_24px_-4px_rgba(0,0,0,0.4)] flex flex-col max-h-[90vh] rounded-none">
+    <div class="modal-box relative w-full {{ $maxWidthClass }} mx-auto my-auto overflow-hidden bg-white border border-slate-200 shadow-[0_0_0_1px_rgba(0,0,0,0.03),0_20px_60px_-10px_rgba(0,0,0,0.18),0_8px_24px_-4px_rgba(0,0,0,0.08)] flex flex-col max-h-[90vh] rounded-none">
         
         <!-- Header -->
-        <div class="modal-header px-6 py-5 border-b border-gray-100 dark:border-white/[0.08] flex items-center justify-between shrink-0">
+        <div class="modal-header px-6 py-5 border-b border-slate-200 flex items-center justify-between shrink-0">
             @if(isset($header))
                 {{ $header }}
             @else
@@ -183,11 +186,11 @@
                     </div>
                     @endif
                     <div class="flex flex-col justify-center">
-                        <h3 class="text-[17px] font-bold text-gray-900 dark:text-slate-100 tracking-tight leading-tight">
+                        <h3 class="text-[17px] font-bold text-slate-900 tracking-tight leading-tight">
                             {{ $title ?? 'Modal Title' }}
                         </h3>
                         @if($description)
-                        <p class="text-[12px] text-gray-500 dark:text-slate-400 mt-1 leading-relaxed">
+                        <p class="text-[12px] text-slate-500 mt-1 leading-relaxed">
                             {{ $description }}
                         </p>
                         @endif
@@ -195,7 +198,7 @@
                 </div>
             @endif
 
-            <button type="button" aria-label="Tutup" onclick="AppModal.close('{{ $id }}')" class="modal-close-x w-8 h-8 flex items-center justify-center rounded-none bg-transparent border-0 cursor-pointer text-gray-400 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-600 dark:hover:bg-white/[0.08] dark:hover:text-gray-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-300">
+            <button type="button" aria-label="Tutup" onclick="AppModal.close('{{ $id }}')" class="modal-close-x w-8 h-8 flex items-center justify-center rounded-none bg-transparent border-0 cursor-pointer text-slate-400 hover:bg-slate-100 hover:text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300">
                 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 24 24">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -210,7 +213,7 @@
 
         <!-- Footer -->
         @if(isset($footer))
-        <div class="modal-footer px-6 py-5 bg-gray-50/80 dark:bg-black/20 border-t border-gray-100 dark:border-white/[0.08] flex items-center justify-end gap-3 shrink-0">
+        <div class="modal-footer px-6 py-5 bg-slate-50 border-t border-slate-200 flex items-center justify-end gap-3 shrink-0">
             {{ $footer }}
         </div>
         @endif

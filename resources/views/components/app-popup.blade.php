@@ -103,10 +103,8 @@
     <div
         id="popup-box"
         class="relative w-full max-w-sm mx-auto overflow-hidden  pt-9 px-7 pb-7
-               bg-gray-200 border border-black/[0.06]
-               shadow-[0_0_0_1px_rgba(0,0,0,0.03),0_20px_60px_-10px_rgba(0,0,0,0.18),0_8px_24px_-4px_rgba(0,0,0,0.08)]
-               dark:bg-[#18181f] dark:border-white/[0.07]
-               dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_20px_60px_-10px_rgba(0,0,0,0.7),0_8px_24px_-4px_rgba(0,0,0,0.4)]"
+               bg-white border border-slate-200
+               shadow-[0_0_0_1px_rgba(0,0,0,0.03),0_20px_60px_-10px_rgba(0,0,0,0.18),0_8px_24px_-4px_rgba(0,0,0,0.08)]"
     >
         {{-- Top accent bar — background color di-set JS --}}
         <div

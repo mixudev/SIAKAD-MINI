@@ -25,36 +25,36 @@
                 <i class="fa-solid fa-gauge-high w-4"></i>
                 <span class="text-sm font-semibold">Dashboard</span>
             </a>
-            <a href="#"
-                class="flex items-center gap-3 px-3 py-2.5 text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500 group transition-all duration-200">
-                <i class="fa-solid fa-user-graduate w-4"></i>
-                <span class="text-sm">Akun</span>
-            </a>
-            <a href="#"
-                class="flex items-center gap-3 px-3 py-2.5 text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500 group transition-all duration-200">
-                <i class="fa-solid fa-user-graduate w-4"></i>
-                <span class="text-sm">Mahasiswa</span>
-            </a>
-            <a href="#"
-                class="flex items-center gap-3 px-3 py-2.5 text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500 group transition-all duration-200">
-                <i class="fa-solid fa-chalkboard-user w-4"></i>
-                <span class="text-sm">Dosen</span>
-            </a>
-            <a href="#"
-                class="flex items-center gap-3 px-3 py-2.5 text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500 group transition-all duration-200">
-                <i class="fa-solid fa-book-open w-4"></i>
-                <span class="text-sm">Mata Kuliah</span>
-            </a>
-            <a href="#"
-                class="flex items-center gap-3 px-3 py-2.5 text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500 group transition-all duration-200">
-                <i class="fa-solid fa-calendar-days w-4"></i>
-                <span class="text-sm">Semester</span>
-            </a>
-            <a href="#"
-                class="flex items-center gap-3 px-3 py-2.5 text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500 group transition-all duration-200">
-                <i class="fa-solid fa-layer-group w-4"></i>
-                <span class="text-sm">Kelas Matkul</span>
-            </a>
+                    <a href="{{ route('admin.akun.index') }}"
+                        class="flex items-center gap-3 px-3 py-2.5 {{ request()->routeIs('admin.akun.*') ? 'text-white bg-slate-700 border-l-4 border-slate-300' : 'text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500' }} group transition-all duration-200">
+                        <i class="fa-solid fa-user-gear w-4"></i>
+                        <span class="text-sm">Akun</span>
+                    </a>
+                    <a href="{{ route('admin.mahasiswa.index') }}"
+                        class="flex items-center gap-3 px-3 py-2.5 {{ request()->routeIs('admin.mahasiswa.*') ? 'text-white bg-slate-700 border-l-4 border-slate-300' : 'text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500' }} group transition-all duration-200">
+                        <i class="fa-solid fa-user-graduate w-4"></i>
+                        <span class="text-sm">Mahasiswa</span>
+                    </a>
+                    <a href="{{ route('admin.dosen.index') }}"
+                        class="flex items-center gap-3 px-3 py-2.5 {{ request()->routeIs('admin.dosen.*') ? 'text-white bg-slate-700 border-l-4 border-slate-300' : 'text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500' }} group transition-all duration-200">
+                        <i class="fa-solid fa-chalkboard-user w-4"></i>
+                        <span class="text-sm">Dosen</span>
+                    </a>
+                    <a href="{{ route('admin.mata-kuliah.index') }}"
+                        class="flex items-center gap-3 px-3 py-2.5 {{ request()->routeIs('admin.mata-kuliah.*') ? 'text-white bg-slate-700 border-l-4 border-slate-300' : 'text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500' }} group transition-all duration-200">
+                        <i class="fa-solid fa-book-open w-4"></i>
+                        <span class="text-sm">Mata Kuliah</span>
+                    </a>
+                    <a href="{{ route('admin.semester.index') }}"
+                        class="flex items-center gap-3 px-3 py-2.5 {{ request()->routeIs('admin.semester.*') ? 'text-white bg-slate-700 border-l-4 border-slate-300' : 'text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500' }} group transition-all duration-200">
+                        <i class="fa-solid fa-calendar-days w-4"></i>
+                        <span class="text-sm">Semester</span>
+                    </a>
+                    <a href="{{ route('admin.kelas-matkul.index') }}"
+                        class="flex items-center gap-3 px-3 py-2.5 {{ request()->routeIs('admin.kelas-matkul.*') ? 'text-white bg-slate-700 border-l-4 border-slate-300' : 'text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500' }} group transition-all duration-200">
+                        <i class="fa-solid fa-layer-group w-4"></i>
+                        <span class="text-sm">Kelas Matkul</span>
+                    </a>
 
             <p class="text-slate-500 text-xs font-semibold tracking-widest uppercase px-3 pt-4 pb-1">Akademik</p>
 

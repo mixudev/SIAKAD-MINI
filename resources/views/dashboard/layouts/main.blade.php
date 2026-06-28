@@ -9,36 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <script>
         tailwind.config = {
-            theme: {
-                extend: {
-                    keyframes: {
-                        fadeIn: {
-                            '0%': {
-                                opacity: '0',
-                                transform: 'translateY(12px)'
-                            },
-                            '100%': {
-                                opacity: '1',
-                                transform: 'translateY(0)'
-                            }
-                        },
-                        slideIn: {
-                            '0%': {
-                                opacity: '0',
-                                transform: 'translateX(-16px)'
-                            },
-                            '100%': {
-                                opacity: '1',
-                                transform: 'translateX(0)'
-                            }
-                        },
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.45s ease both',
-                        'slide-in': 'slideIn 0.35s ease both',
-                    }
-                }
-            }
+            darkMode: 'class',
         }
     </script>
     <style>
@@ -70,7 +41,6 @@
 
 <body class="bg-slate-100 font-sans text-slate-800 antialiased">
 
-    <x-app-popup/>
     <!-- ═══════════════════════════════════════════════
      MOBILE OVERLAY (sidebar toggle)
 ════════════════════════════════════════════════ -->
@@ -112,6 +82,10 @@
 
         </div><!-- /main area -->
     </div><!-- /layout wrapper -->
+
+    <x-app-popup />
+
+    @stack('scripts')
 
     <script>
         function toggleSidebar() {
