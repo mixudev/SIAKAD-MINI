@@ -78,7 +78,13 @@
             <footer class="border-t border-slate-200 bg-white px-4 lg:px-8 py-4 flex items-center justify-between">
                 <p class="text-slate-500 text-xs">© 2026 <span class="font-semibold text-slate-700">SIAKAD MINI</span>
                 </p>
-                <p class="text-slate-400 text-xs">Sistem Informasi Akademik</p>
+                <div class="flex items-center gap-3">
+                    <a href="{{ route('docs.index') }}" class="text-slate-400 hover:text-indigo-600 text-xs transition-colors">
+                        <i class="fa-solid fa-book-open mr-1"></i>Dokumentasi
+                    </a>
+                    <span class="text-slate-300">|</span>
+                    <p class="text-slate-400 text-xs">Sistem Informasi Akademik</p>
+                </div>
             </footer>
 
         </div><!-- /main area -->

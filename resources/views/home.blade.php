@@ -79,9 +79,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#informasi"
+                    <a href="#fitur"
                         class="relative py-2 hover:text-stone-900 transition-colors duration-300 group">
-                        Informasi
+                        Fitur
                         <span
                             class="absolute left-0 -bottom-0.5 h-px w-full bg-stone-900 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
                     </a>
@@ -94,15 +94,35 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/login" class="relative py-2 hover:text-stone-900 transition-colors duration-300 group">
-                        Login
+                    <a href="{{ route('docs.index') }}"
+                        class="relative py-2 hover:text-stone-900 transition-colors duration-300 group">
+                        Dokumentasi
                         <span
                             class="absolute left-0 -bottom-0.5 h-px w-full bg-stone-900 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
                     </a>
                 </li>
+                @auth
+                    <li>
+                        <a href="{{ route('dashboard') }}"
+                            class="relative py-2 hover:text-stone-900 transition-colors duration-300 group">
+                            Dashboard
+                            <span
+                                class="absolute left-0 -bottom-0.5 h-px w-full bg-stone-900 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
+                        </a>
+                    </li>
+                @else
+                    <li>
+                        <a href="/login"
+                            class="relative py-2 hover:text-stone-900 transition-colors duration-300 group">
+                            Login
+                            <span
+                                class="absolute left-0 -bottom-0.5 h-px w-full bg-stone-900 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
+                        </a>
+                    </li>
+                @endauth
 
             </ul>
-            <a href="#informasi"
+            <a href="#fitur"
                 class="sm:hidden text-[13px] font-medium text-stone-500 hover:text-stone-900 transition-colors duration-300">Menu</a>
         </nav>
     </header>
@@ -117,28 +137,28 @@
                 <div class="lg:col-span-8 opacity-0 animate-fadeInUp">
                     <p class="flex items-center gap-3 text-[12px] tracking-[0.2em] uppercase text-stone-400 mb-8">
                         <span class="inline-block w-8 h-px bg-amber-700"></span>
-                        Halaman Umum &mdash; 2026
+                        Sistem Informasi Akademik
                     </p>
                     <h1
                         class="font-serif text-[2.75rem] sm:text-6xl lg:text-7xl font-medium tracking-tight text-stone-900 leading-[1.05]">
-                        Ruang informasi<br class="hidden sm:block"> akademik yang tenang<br class="hidden sm:block"> dan
-                        sederhana.
+                        Kelola akademik<br class="hidden sm:block"> dalam satu sistem<br class="hidden sm:block"> yang
+                        rapi dan efisien.
                     </h1>
                 </div>
                 <div class="lg:col-span-4 opacity-0 animate-fadeInUp [animation-delay:150ms]">
                     <p class="text-base sm:text-lg text-stone-500 leading-relaxed border-l border-stone-300 pl-6">
-                        Sebuah halaman dengan struktur yang jelas, dirancang untuk menampilkan informasi secara rapi
-                        tanpa gangguan visual yang berlebihan.
+                        SIAKAD Mini adalah sistem informasi akademik untuk manajemen data mahasiswa, dosen, mata
+                        kuliah, KRS, nilai, dan KHS dalam satu platform yang terintegrasi dan mudah digunakan.
                     </p>
                     <div class="mt-10 flex flex-wrap items-center gap-4">
-                        <a href="#informasi"
+                        <a href="#fitur"
                             class="group inline-flex items-center gap-2 border border-stone-900 bg-stone-900 text-stone-50 px-7 py-3.5 text-[13px] font-medium tracking-wide hover:bg-amber-700 hover:border-amber-700 transition-all duration-300">
-                            Lihat Informasi
+                            Jelajahi Fitur
                             <span class="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
                         </a>
-                        <a href="#tentang"
+                        <a href="{{ route('docs.index') }}"
                             class="inline-flex items-center border border-stone-300 px-7 py-3.5 text-[13px] font-medium tracking-wide text-stone-700 hover:border-stone-900 hover:text-stone-900 transition-colors duration-300">
-                            Tentang Halaman
+                            Dokumentasi
                         </a>
                     </div>
                 </div>
@@ -148,19 +168,19 @@
                 class="mt-24 sm:mt-28 grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-12 border-t border-stone-200 pt-10 opacity-0 animate-fadeInUp [animation-delay:300ms]">
                 <div>
                     <p class="font-serif text-3xl sm:text-4xl text-stone-900">01</p>
-                    <p class="mt-2 text-[13px] tracking-wide text-stone-400 uppercase">Struktur Jelas</p>
+                    <p class="mt-2 text-[13px] tracking-wide text-stone-400 uppercase">Manajemen Akun</p>
                 </div>
                 <div>
                     <p class="font-serif text-3xl sm:text-4xl text-stone-900">02</p>
-                    <p class="mt-2 text-[13px] tracking-wide text-stone-400 uppercase">Ruang Lega</p>
+                    <p class="mt-2 text-[13px] tracking-wide text-stone-400 uppercase">KRS Online</p>
                 </div>
                 <div>
                     <p class="font-serif text-3xl sm:text-4xl text-stone-900">03</p>
-                    <p class="mt-2 text-[13px] tracking-wide text-stone-400 uppercase">Tipografi Rapi</p>
+                    <p class="mt-2 text-[13px] tracking-wide text-stone-400 uppercase">Nilai &amp; KHS</p>
                 </div>
                 <div>
                     <p class="font-serif text-3xl sm:text-4xl text-stone-900">04</p>
-                    <p class="mt-2 text-[13px] tracking-wide text-stone-400 uppercase">Responsif Penuh</p>
+                    <p class="mt-2 text-[13px] tracking-wide text-stone-400 uppercase">Multi Role</p>
                 </div>
             </div>
         </section>
@@ -176,36 +196,37 @@
                         </p>
                         <h2
                             class="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-stone-900 leading-snug">
-                            Disusun untuk kejelasan, bukan untuk pamer.
+                            Sistem informasi akademik untuk institusi pendidikan.
                         </h2>
                     </div>
                     <div class="lg:col-span-7 lg:col-start-6 opacity-0 animate-fadeInUp [animation-delay:120ms]">
                         <p class="text-lg text-stone-500 leading-relaxed">
-                            Halaman ini berfungsi sebagai contoh tata letak umum yang netral. Kontennya bersifat generik
-                            dan dapat disesuaikan sesuai kebutuhan, tanpa menonjolkan klaim tertentu maupun penjelasan
-                            teknis dari sistem yang lebih luas.
+                            SIAKAD Mini dikembangkan untuk memenuhi kebutuhan manajemen akademik secara
+                            digital. Sistem ini mendukung tiga peran pengguna &mdash; administrator, dosen, dan
+                            mahasiswa &mdash; dengan akses dan fitur yang sesuai masing-masing peran.
                         </p>
                         <p class="mt-6 text-lg text-stone-500 leading-relaxed">
-                            Fokus utama dari tampilan ini adalah keterbacaan, kerapian susunan, dan ruang kosong yang
-                            cukup agar setiap bagian terasa lega dan mudah diikuti.
+                            Fitur utama meliputi manajemen data mahasiswa dan dosen, pengelolaan mata kuliah
+                            dan kelas perkuliahan, pendaftaran KRS online, input nilai oleh dosen, serta cetak
+                            KHS dan transkrip nilai. Dibangun dengan framework Laravel dan Tailwind CSS.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Informasi Umum (cards) -->
-        <section id="informasi" class="border-t border-stone-200">
+        <!-- Fitur -->
+        <section id="fitur" class="border-t border-stone-200">
             <div class="max-w-7xl mx-auto px-6 sm:px-10 py-24 sm:py-32">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
                     <div class="lg:col-span-5 opacity-0 animate-fadeInUp">
                         <p class="flex items-center gap-3 text-[12px] tracking-[0.2em] uppercase text-stone-400 mb-6">
                             <span class="inline-block w-8 h-px bg-amber-700"></span>
-                            Informasi Umum
+                            Fitur Utama
                         </p>
                         <h2
                             class="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-stone-900 leading-snug">
-                            Beberapa blok ruang yang dapat diisi sesuai kebutuhan.
+                            Semua fitur akademik dalam satu platform.
                         </h2>
                     </div>
                 </div>
@@ -217,10 +238,10 @@
                             class="font-serif text-sm text-amber-700 group-hover:text-amber-400 transition-colors duration-500">01</span>
                         <h3
                             class="mt-5 text-lg font-medium text-stone-900 group-hover:text-white transition-colors duration-500">
-                            Catatan Umum</h3>
+                            Manajemen Akun</h3>
                         <p
                             class="mt-3 text-[15px] text-stone-500 group-hover:text-stone-300 leading-relaxed transition-colors duration-500">
-                            Ruang ini disediakan untuk keterangan singkat yang bersifat umum.</p>
+                            Kelola akun pengguna dengan tiga role: admin, dosen, dan mahasiswa. Masing-masing memiliki hak akses berbeda.</p>
                     </div>
 
                     <div
@@ -229,10 +250,10 @@
                             class="font-serif text-sm text-amber-700 group-hover:text-amber-400 transition-colors duration-500">02</span>
                         <h3
                             class="mt-5 text-lg font-medium text-stone-900 group-hover:text-white transition-colors duration-500">
-                            Pengumuman</h3>
+                            KRS Online</h3>
                         <p
                             class="mt-3 text-[15px] text-stone-500 group-hover:text-stone-300 leading-relaxed transition-colors duration-500">
-                            Tempat menampilkan pengumuman atau catatan yang relevan.</p>
+                            Mahasiswa dapat memilih mata kuliah, mengisi KRS, dan mengajukan persetujuan. Admin memproses pengajuan.</p>
                     </div>
 
                     <div
@@ -241,10 +262,10 @@
                             class="font-serif text-sm text-amber-700 group-hover:text-amber-400 transition-colors duration-500">03</span>
                         <h3
                             class="mt-5 text-lg font-medium text-stone-900 group-hover:text-white transition-colors duration-500">
-                            Jadwal</h3>
+                            Input Nilai</h3>
                         <p
                             class="mt-3 text-[15px] text-stone-500 group-hover:text-stone-300 leading-relaxed transition-colors duration-500">
-                            Area kosong untuk informasi terkait jadwal atau linimasa.</p>
+                            Dosen menginput nilai tugas, UTS, dan UAS. Nilai Akhir dan Nilai Huruf dikalkulasi otomatis oleh sistem.</p>
                     </div>
 
                     <div
@@ -253,10 +274,10 @@
                             class="font-serif text-sm text-amber-700 group-hover:text-amber-400 transition-colors duration-500">04</span>
                         <h3
                             class="mt-5 text-lg font-medium text-stone-900 group-hover:text-white transition-colors duration-500">
-                            Dokumen</h3>
+                            KHS &amp; Transkrip</h3>
                         <p
                             class="mt-3 text-[15px] text-stone-500 group-hover:text-stone-300 leading-relaxed transition-colors duration-500">
-                            Ruang placeholder untuk referensi dokumen terkait.</p>
+                            Mahasiswa melihat KHS per semester dan transkrip nilai lengkap. IP dan IPK dihitung otomatis.</p>
                     </div>
 
                     <div
@@ -265,10 +286,10 @@
                             class="font-serif text-sm text-amber-700 group-hover:text-amber-400 transition-colors duration-500">05</span>
                         <h3
                             class="mt-5 text-lg font-medium text-stone-900 group-hover:text-white transition-colors duration-500">
-                            Kontak Unit</h3>
+                            Kelas &amp; Jadwal</h3>
                         <p
                             class="mt-3 text-[15px] text-stone-500 group-hover:text-stone-300 leading-relaxed transition-colors duration-500">
-                            Tempat mencantumkan kontak unit terkait jika diperlukan.</p>
+                            Admin mengatur kelas paralel, dosen pengampu, kapasitas, dan jadwal perkuliahan setiap semester.</p>
                     </div>
 
                     <div
@@ -277,16 +298,16 @@
                             class="font-serif text-sm text-amber-700 group-hover:text-amber-400 transition-colors duration-500">06</span>
                         <h3
                             class="mt-5 text-lg font-medium text-stone-900 group-hover:text-white transition-colors duration-500">
-                            Lainnya</h3>
+                            Dashboard Analitik</h3>
                         <p
                             class="mt-3 text-[15px] text-stone-500 group-hover:text-stone-300 leading-relaxed transition-colors duration-500">
-                            Ruang tambahan yang dapat diisi sesuai kebutuhan lain.</p>
+                            Setiap role memiliki dashboard dengan grafik dan statistik real-time untuk memantau aktivitas akademik.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Pernyataan netral -->
+        <!-- Pernyataan -->
         <section class="border-t border-stone-200 bg-white">
             <div class="max-w-7xl mx-auto px-6 sm:px-10 py-24 sm:py-32">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
@@ -295,13 +316,13 @@
                     </div>
                     <blockquote class="lg:col-span-10 opacity-0 animate-fadeInUp [animation-delay:100ms]">
                         <p class="font-serif text-2xl sm:text-3xl lg:text-4xl text-stone-800 leading-snug font-normal">
-                            Susunan yang jelas dan ruang yang cukup sering kali lebih membantu dibandingkan tampilan
-                            yang dipenuhi elemen visual.
+                            Sistem informasi akademik yang baik bukan hanya tentang menyimpan data, tetapi
+                            bagaimana data tersebut memudahkan setiap proses akademik sehari-hari.
                         </p>
                         <footer
                             class="mt-8 flex items-center gap-4 text-[13px] tracking-wide text-stone-400 uppercase">
                             <span class="inline-block w-8 h-px bg-amber-700"></span>
-                            Catatan Desain
+                            Tentang SIAKAD Mini
                         </footer>
                     </blockquote>
                 </div>
@@ -318,7 +339,7 @@
                         SIAKAD <span class="text-amber-700">Mini</span>
                     </span>
                     <p class="mt-4 text-sm text-stone-500 leading-relaxed max-w-xs">
-                        Halaman contoh dengan struktur generik, dibuat untuk kebutuhan tampilan yang rapi dan netral.
+                        Sistem informasi akademik untuk institusi pendidikan. Kelola data mahasiswa, dosen, perkuliahan, KRS, nilai, dan KHS secara digital.
                     </p>
                 </div>
                 <div class="sm:col-span-3 sm:col-start-8">
@@ -326,17 +347,17 @@
                     <ul class="space-y-3 text-sm text-stone-500">
                         <li><a href="#tentang" class="hover:text-stone-900 transition-colors duration-300">Tentang</a>
                         </li>
-                        <li><a href="#informasi"
-                                class="hover:text-stone-900 transition-colors duration-300">Informasi</a></li>
+                        <li><a href="#fitur"
+                                class="hover:text-stone-900 transition-colors duration-300">Fitur</a></li>
                     </ul>
                 </div>
                 <div class="sm:col-span-3">
                     <p class="text-[12px] tracking-[0.2em] uppercase text-stone-400 mb-4">Lainnya</p>
                     <ul class="space-y-3 text-sm text-stone-500">
-                        <li><a href="#"
-                                class="hover:text-stone-900 transition-colors duration-300">Kebijakan</a></li>
-                        <li><a href="#"
-                                class="hover:text-stone-900 transition-colors duration-300">Ketentuan</a></li>
+                        <li><a href="{{ route('docs.index') }}"
+                                class="hover:text-stone-900 transition-colors duration-300">Dokumentasi</a></li>
+                        <li><a href="/login"
+                                class="hover:text-stone-900 transition-colors duration-300">Login</a></li>
                     </ul>
                 </div>
             </div>
