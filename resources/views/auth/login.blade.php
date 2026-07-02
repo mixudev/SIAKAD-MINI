@@ -69,7 +69,7 @@
               </div>
             @endif
 
-            <form method="POST" action="{{ route('login') }}" class="mt-9 space-y-6">
+            <form method="POST" action="{{ route('login') }}" class="mt-5 space-y-6">
               @csrf
 
               <div>
