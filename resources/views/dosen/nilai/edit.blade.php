@@ -30,7 +30,7 @@
         x-transition:enter="transition ease-out duration-300"
         x-transition:enter-start="opacity-0"
         x-cloak
-        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+        class="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50"
     >
         <div class="bg-white max-w-lg w-full mx-4 shadow-2xl">
             <div class="bg-gradient-to-r from-indigo-600 to-indigo-800 px-5 py-4 flex items-center justify-between">

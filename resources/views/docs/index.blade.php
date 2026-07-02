@@ -36,7 +36,6 @@
     </div>
 
     <div class="mt-8 border-t border-stone-200 pt-8 max-w-lg mx-auto">
-        <p class="text-sm text-stone-500 !mb-3">Belum punya akun?</p>
         <a href="{{ url('/login') }}" class="inline-flex items-center gap-2 text-sm text-amber-700 hover:text-amber-900 transition-colors font-medium !no-underline border border-amber-700 px-5 py-2.5 hover:bg-amber-50">
             <i class="fas fa-sign-in-alt"></i>
             Login ke Aplikasi
