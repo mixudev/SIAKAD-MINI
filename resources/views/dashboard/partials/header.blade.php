@@ -1,4 +1,4 @@
-@php
+﻿@php
     $user = auth()->user();
     $roleLabel = match(true) {
         $user->isAdmin() => 'Administrator',
@@ -10,7 +10,7 @@
         $user->isAdmin() => 'Super Admin',
         $user->isDosen() => 'Dosen',
         $user->isMahasiswa() => 'Mahasiswa',
-        default => '—',
+        default => 'â€”',
     };
 @endphp
             <header
@@ -34,6 +34,8 @@
 
                 <!-- Right -->
                 <div class="flex items-center gap-2 lg:gap-4">
+
+
                     <!-- Notifikasi -->
                     <button
                         class="relative w-9 h-9 flex items-center justify-center text-slate-500 hover:text-slate-600 hover:bg-slate-50 transition-all duration-200 border border-transparent hover:border-slate-100">
@@ -52,3 +54,4 @@
                     </div>
                 </div>
             </header>
+

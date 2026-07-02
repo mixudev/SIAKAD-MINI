@@ -3,6 +3,8 @@
 @section('content')
 <div class="animate-fade-in">
 
+    <x-ai.insight-box />
+
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         <div class="bg-white border border-slate-200 p-5">
             <div class="flex items-center justify-between mb-3">

@@ -1,4 +1,4 @@
-@php
+﻿@php
     $user = auth()->user();
 @endphp
 <aside id="sidebar"
@@ -23,6 +23,7 @@
                 <i class="fa-solid fa-gauge-high w-4"></i>
                 <span class="text-sm font-semibold">Dashboard</span>
             </a>
+
             <a href="{{ route('admin.akun.index') }}"
                 class="flex items-center gap-3 px-3 py-2.5 {{ request()->routeIs('admin.akun.*') ? 'text-white bg-slate-700 border-l-4 border-slate-300' : 'text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500' }} group transition-all duration-200">
                 <i class="fa-solid fa-user-gear w-4"></i>
@@ -79,6 +80,7 @@
                 <i class="fa-solid fa-gauge-high w-4"></i>
                 <span class="text-sm font-semibold">Dashboard</span>
             </a>
+
             <a href="{{ route('mahasiswa.krs.index') }}"
                 class="flex items-center gap-3 px-3 py-2.5 {{ request()->routeIs('mahasiswa.krs.*') ? 'text-white bg-slate-700 border-l-4 border-slate-300' : 'text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500' }} group transition-all duration-200">
                 <i class="fa-solid fa-clipboard-list w-4"></i>
@@ -97,6 +99,7 @@
                 <i class="fa-solid fa-gauge-high w-4"></i>
                 <span class="text-sm font-semibold">Dashboard</span>
             </a>
+
             <a href="{{ route('dosen.nilai.index') }}"
                 class="flex items-center gap-3 px-3 py-2.5 {{ request()->routeIs('dosen.nilai.*') ? 'text-white bg-slate-700 border-l-4 border-slate-300' : 'text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500' }} group transition-all duration-200">
                 <i class="fa-solid fa-star-half-stroke w-4"></i>
@@ -136,3 +139,7 @@
         });
     }
 </script>
+
+
+
+

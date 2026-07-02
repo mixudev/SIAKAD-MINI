@@ -10,6 +10,9 @@ use App\Http\Controllers\Admin\MahasiswaController;
 use App\Http\Controllers\Admin\MataKuliahController;
 use App\Http\Controllers\Admin\NilaiController as AdminNilaiController;
 use App\Http\Controllers\Admin\SemesterController;
+use App\Http\Controllers\Ai\ChatController;
+use App\Http\Controllers\Ai\ChatPageController;
+use App\Http\Controllers\Ai\InsightController;
 use App\Http\Controllers\Dosen\DashboardController as DosenDashboardController;
 use App\Http\Controllers\Dosen\NilaiController;
 use App\Http\Controllers\Mahasiswa\DashboardController as MahasiswaDashboardController;
@@ -18,6 +21,15 @@ use App\Http\Controllers\Mahasiswa\KrsController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
+    Route::prefix('ai')->name('ai.')->group(function () {
+        Route::get('chat', ChatPageController::class)->name('chat');
+        Route::get('insight', [InsightController::class, 'index'])->name('insight');
+        Route::get('conversations', [ChatController::class, 'conversations'])->name('conversations');
+        Route::get('conversations/{conversationId}', [ChatController::class, 'history'])->name('conversations.history');
+        Route::post('chat', [ChatController::class, 'send'])->name('chat');
+        Route::get('analyze-grade/{kelasMatkul}', [InsightController::class, 'analyzeGrade'])->name('analyze-grade');
+    });
+
     Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', AdminDashboardController::class)->name('dashboard');
 

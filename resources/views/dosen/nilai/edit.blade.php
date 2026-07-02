@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('content')
-<div class="animate-fade-in">
+<div class="animate-fade-in" x-data="{ aiLoading: false, aiAnalysis: '', aiShow: false }">
     <div class="flex items-center justify-between mb-6">
         <div>
             <h1 class="text-lg font-bold text-slate-900">Input Nilai</h1>
@@ -10,9 +10,43 @@
                 (Kelas {{ $kelasMatkul->nama_kelas }}) — {{ $kelasMatkul->semester->nama }}
             </p>
         </div>
-        <a href="{{ route('dosen.nilai.index') }}" class="px-4 py-2 border border-slate-200 text-slate-600 text-xs font-bold tracking-wide hover:bg-slate-50 transition-colors duration-200">
-            Kembali
-        </a>
+        <div class="flex items-center gap-2">
+            <button
+                type="button"
+                @click="if(!aiAnalysis && !aiLoading) { aiLoading = true; fetch('{{ route('ai.analyze-grade', $kelasMatkul) }}').then(r => r.json()).then(d => { aiAnalysis = d.analysis; aiShow = true; aiLoading = false; }).catch(() => { aiLoading = false; alert('Gagal memuat analisis.'); }); } else { aiShow = !aiShow; }"
+                class="px-4 py-2 bg-indigo-600 text-white text-xs font-bold tracking-wide hover:bg-indigo-700 transition-colors duration-200"
+            >
+                <i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i>
+                <span x-text="aiLoading ? 'Menganalisis...' : 'Analisis dengan AI'"></span>
+            </button>
+            <a href="{{ route('dosen.nilai.index') }}" class="px-4 py-2 border border-slate-200 text-slate-600 text-xs font-bold tracking-wide hover:bg-slate-50 transition-colors duration-200">
+                Kembali
+            </a>
+        </div>
+    </div>
+
+    <div
+        x-show="aiShow"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-cloak
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+    >
+        <div class="bg-white max-w-lg w-full mx-4 shadow-2xl">
+            <div class="bg-gradient-to-r from-indigo-600 to-indigo-800 px-5 py-4 flex items-center justify-between">
+                <h3 class="text-sm font-bold text-white uppercase tracking-wider">Analisis AI</h3>
+                <button @click="aiShow = false" class="text-white/50 hover:text-white">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div class="p-5">
+                <div x-show="aiLoading" class="flex items-center gap-2 text-slate-500">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <span class="text-sm">Menganalisis data nilai...</span>
+                </div>
+                <p x-show="!aiLoading" class="text-sm text-slate-700 leading-relaxed whitespace-pre-line" x-text="aiAnalysis"></p>
+            </div>
+        </div>
     </div>
 
     <div class="bg-white border border-slate-200">
