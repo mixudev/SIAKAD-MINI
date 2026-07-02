@@ -18,6 +18,11 @@ class KrsController extends Controller
     public function index(): View
     {
         $mahasiswa = auth()->user()->mahasiswa;
+
+        if (! $mahasiswa) {
+            abort(403, 'Profil mahasiswa tidak ditemukan.');
+        }
+
         $semester = Semester::aktif();
 
         if (! $semester) {
@@ -38,6 +43,11 @@ class KrsController extends Controller
     public function tambah(KelasMatkul $kelasMatkul): RedirectResponse
     {
         $mahasiswa = auth()->user()->mahasiswa;
+
+        if (! $mahasiswa) {
+            abort(403, 'Profil mahasiswa tidak ditemukan.');
+        }
+
         $semester = Semester::aktif();
 
         if (! $semester) {
@@ -61,9 +71,15 @@ class KrsController extends Controller
 
     public function hapus(KrsDetail $krsDetail): RedirectResponse
     {
+        $mahasiswa = auth()->user()->mahasiswa;
+
+        if (! $mahasiswa) {
+            abort(403, 'Profil mahasiswa tidak ditemukan.');
+        }
+
         $krs = $krsDetail->krs;
 
-        if ($krs->mahasiswa_id !== auth()->user()->mahasiswa->id) {
+        if ($krs->mahasiswa_id !== $mahasiswa->id) {
             abort(403);
         }
 
@@ -78,7 +94,13 @@ class KrsController extends Controller
 
     public function ajukan(Krs $krs): RedirectResponse
     {
-        if ($krs->mahasiswa_id !== auth()->user()->mahasiswa->id) {
+        $mahasiswa = auth()->user()->mahasiswa;
+
+        if (! $mahasiswa) {
+            abort(403, 'Profil mahasiswa tidak ditemukan.');
+        }
+
+        if ($krs->mahasiswa_id !== $mahasiswa->id) {
             abort(403);
         }
 

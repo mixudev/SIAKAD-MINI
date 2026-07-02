@@ -19,8 +19,12 @@ class InsightController extends Controller
 
         $insight = match ($role) {
             'admin' => $this->aiInsightService->generateInsightAdmin(),
-            'dosen' => $this->aiInsightService->generateInsightDosen($user->dosen->id),
-            'mahasiswa' => $this->aiInsightService->generateInsightMahasiswa($user->mahasiswa),
+            'dosen' => $user->dosen
+                ? $this->aiInsightService->generateInsightDosen($user->dosen->id)
+                : 'Profil dosen tidak ditemukan.',
+            'mahasiswa' => $user->mahasiswa
+                ? $this->aiInsightService->generateInsightMahasiswa($user->mahasiswa)
+                : 'Profil mahasiswa tidak ditemukan.',
             default => 'Selamat datang di SIAKAD Mini.',
         };
 

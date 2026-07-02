@@ -11,6 +11,10 @@ class DashboardController extends Controller
     {
         $mahasiswa = auth()->user()->mahasiswa;
 
+        if (! $mahasiswa) {
+            abort(403, 'Profil mahasiswa tidak ditemukan.');
+        }
+
         return view('mahasiswa.dashboard', [
             'mahasiswa' => $mahasiswa,
             'sksDiambil' => $service->getStatSks($mahasiswa),

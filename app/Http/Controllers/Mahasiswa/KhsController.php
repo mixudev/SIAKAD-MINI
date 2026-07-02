@@ -14,6 +14,11 @@ class KhsController extends Controller
     public function index(): View
     {
         $mahasiswa = auth()->user()->mahasiswa;
+
+        if (! $mahasiswa) {
+            abort(403, 'Profil mahasiswa tidak ditemukan.');
+        }
+
         $semesterList = $this->khsService->getSemesterList($mahasiswa);
 
         $semesterAktif = Semester::aktif();

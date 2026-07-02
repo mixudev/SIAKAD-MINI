@@ -17,6 +17,15 @@ class NilaiController extends Controller
     public function index(): View
     {
         $dosen = auth()->user()->dosen;
+
+        if (! $dosen) {
+            return view('dosen.nilai.index', [
+                'daftarKelas' => collect(),
+                'semesters' => Semester::orderByDesc('id')->get(),
+                'semesterId' => request('semester_id', Semester::aktif()?->id),
+            ]);
+        }
+
         $semesters = Semester::orderByDesc('id')->get();
         $semesterId = request('semester_id', Semester::aktif()?->id);
         $semester = $semesterId ? Semester::find($semesterId) : null;
