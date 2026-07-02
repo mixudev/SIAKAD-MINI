@@ -135,14 +135,14 @@
         <h3
             id="popup-title"
             class="popup-anim-title text-center text-[17px] font-bold leading-snug tracking-tight mb-2
-                   text-gray-900 text-slate-100"
+                   text-gray-900 "
         ></h3>
 
         {{-- Description --}}
         <p
             id="popup-desc"
             class="popup-anim-desc text-center text-sm leading-relaxed mb-6 hidden
-                   text-gray-500 text-slate-400"
+                   text-gray-500 "
         ></p>
 
         {{-- Action buttons --}}
@@ -168,8 +168,8 @@
         success: {
             accent    : '#22c55e',
             ring      : 'rgba(34,197,94,0.25)',
-            iconBg    : 'bg-green-100 bg-green-950',
-            iconColor : 'text-green-600 text-green-400',
+            iconBg    : 'bg-green-100 ',
+            iconColor : 'text-green-600 ',
             btnClass  : 'bg-green-500 hover:bg-green-600 focus-visible:ring-green-500',
             svg: `<svg class="popup-anim-svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                     <polyline points="20 6 9 17 4 12"/>
@@ -178,8 +178,8 @@
         error: {
             accent    : '#ef4444',
             ring      : 'rgba(239,68,68,0.25)',
-            iconBg    : 'bg-red-100 bg-red-950',
-            iconColor : 'text-red-600 text-red-400',
+            iconBg    : 'bg-red-100 ',
+            iconColor : 'text-red-600 ',
             btnClass  : 'bg-red-500 hover:bg-red-600 focus-visible:ring-red-500',
             svg: `<svg class="popup-anim-svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" viewBox="0 0 24 24">
                     <line x1="18" y1="6" x2="6" y2="18"/>
@@ -189,8 +189,8 @@
         warning: {
             accent    : '#f59e0b',
             ring      : 'rgba(245,158,11,0.25)',
-            iconBg    : 'bg-amber-100 bg-amber-950',
-            iconColor : 'text-amber-600 text-amber-400',
+            iconBg    : 'bg-amber-100 ',
+            iconColor : 'text-amber-600 ',
             btnClass  : 'bg-amber-500 hover:bg-amber-600 focus-visible:ring-amber-500',
             svg: `<svg class="popup-anim-svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" viewBox="0 0 24 24">
                     <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
@@ -201,8 +201,8 @@
         info: {
             accent    : '#3b82f6',
             ring      : 'rgba(59,130,246,0.25)',
-            iconBg    : 'bg-blue-100 bg-blue-950',
-            iconColor : 'text-blue-600 text-blue-400',
+            iconBg    : 'bg-blue-100 ',
+            iconColor : 'text-blue-600 ',
             btnClass  : 'bg-blue-500 hover:bg-blue-600 focus-visible:ring-blue-500',
             svg: `<svg class="popup-anim-svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10"/>
@@ -213,8 +213,8 @@
         confirm: {
             accent    : '#ef4444',
             ring      : 'rgba(239,68,68,0.25)',
-            iconBg    : 'bg-red-100 bg-red-950',
-            iconColor : 'text-red-600 text-red-400',
+            iconBg    : 'bg-red-100 ',
+            iconColor : 'text-red-600 ',
             btnClass  : 'bg-red-500 hover:bg-red-600 focus-visible:ring-red-500',
             svg: `<svg class="popup-anim-svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                     <polyline points="3 6 5 6 21 6"/>
@@ -226,8 +226,8 @@
         custom: {
             accent    : '#6366f1',
             ring      : 'rgba(99,102,241,0.25)',
-            iconBg    : 'bg-indigo-100 bg-indigo-950',
-            iconColor : 'text-indigo-600 text-indigo-400',
+            iconBg    : 'bg-indigo-100 ',
+            iconColor : 'text-indigo-600 ',
             btnClass  : 'bg-indigo-500 hover:bg-indigo-600 focus-visible:ring-indigo-500',
             svg: `<svg class="popup-anim-svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10"/>
