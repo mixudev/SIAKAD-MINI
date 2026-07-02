@@ -213,7 +213,7 @@
 function confirmAction(event, title, description) {
     event.preventDefault();
     const form = event.target.closest('form');
-    AppPopup.confirm({
+    AppPopup.info({
         title: title,
         description: description,
         confirmText: 'Ya',

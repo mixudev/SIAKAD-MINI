@@ -50,7 +50,6 @@
 |   - info     : dengan tombol, harus ditutup manual
 |   - confirm  : dua tombol (confirm + cancel)
 |   - Klik backdrop / tekan Escape / tombol X → tutup popup
-|   - Dark mode: class .dark pada <html> (Tailwind dark mode)
 --}}
 
 {{-- =====================================================================
@@ -120,7 +119,7 @@
             class="absolute top-3.5 right-3.5 w-8 h-8 flex items-center justify-center
                    rounded-[10px] bg-transparent border-0 cursor-pointer
                    text-gray-400 hover:bg-gray-100 hover:text-gray-700
-                   dark:text-gray-600 dark:hover:bg-white/[0.08] dark:hover:text-gray-300
+                   text-gray-600 hover:bg-white/[0.08] hover:text-gray-300
                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-300"
         >
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 24 24">
@@ -136,14 +135,14 @@
         <h3
             id="popup-title"
             class="popup-anim-title text-center text-[17px] font-bold leading-snug tracking-tight mb-2
-                   text-gray-900 dark:text-slate-100"
+                   text-gray-900 text-slate-100"
         ></h3>
 
         {{-- Description --}}
         <p
             id="popup-desc"
             class="popup-anim-desc text-center text-sm leading-relaxed mb-6 hidden
-                   text-gray-500 dark:text-slate-400"
+                   text-gray-500 text-slate-400"
         ></p>
 
         {{-- Action buttons --}}
@@ -169,8 +168,8 @@
         success: {
             accent    : '#22c55e',
             ring      : 'rgba(34,197,94,0.25)',
-            iconBg    : 'bg-green-100 dark:bg-green-950',
-            iconColor : 'text-green-600 dark:text-green-400',
+            iconBg    : 'bg-green-100 bg-green-950',
+            iconColor : 'text-green-600 text-green-400',
             btnClass  : 'bg-green-500 hover:bg-green-600 focus-visible:ring-green-500',
             svg: `<svg class="popup-anim-svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                     <polyline points="20 6 9 17 4 12"/>
@@ -179,8 +178,8 @@
         error: {
             accent    : '#ef4444',
             ring      : 'rgba(239,68,68,0.25)',
-            iconBg    : 'bg-red-100 dark:bg-red-950',
-            iconColor : 'text-red-600 dark:text-red-400',
+            iconBg    : 'bg-red-100 bg-red-950',
+            iconColor : 'text-red-600 text-red-400',
             btnClass  : 'bg-red-500 hover:bg-red-600 focus-visible:ring-red-500',
             svg: `<svg class="popup-anim-svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" viewBox="0 0 24 24">
                     <line x1="18" y1="6" x2="6" y2="18"/>
@@ -190,8 +189,8 @@
         warning: {
             accent    : '#f59e0b',
             ring      : 'rgba(245,158,11,0.25)',
-            iconBg    : 'bg-amber-100 dark:bg-amber-950',
-            iconColor : 'text-amber-600 dark:text-amber-400',
+            iconBg    : 'bg-amber-100 bg-amber-950',
+            iconColor : 'text-amber-600 text-amber-400',
             btnClass  : 'bg-amber-500 hover:bg-amber-600 focus-visible:ring-amber-500',
             svg: `<svg class="popup-anim-svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" viewBox="0 0 24 24">
                     <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
@@ -202,8 +201,8 @@
         info: {
             accent    : '#3b82f6',
             ring      : 'rgba(59,130,246,0.25)',
-            iconBg    : 'bg-blue-100 dark:bg-blue-950',
-            iconColor : 'text-blue-600 dark:text-blue-400',
+            iconBg    : 'bg-blue-100 bg-blue-950',
+            iconColor : 'text-blue-600 text-blue-400',
             btnClass  : 'bg-blue-500 hover:bg-blue-600 focus-visible:ring-blue-500',
             svg: `<svg class="popup-anim-svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10"/>
@@ -214,8 +213,8 @@
         confirm: {
             accent    : '#ef4444',
             ring      : 'rgba(239,68,68,0.25)',
-            iconBg    : 'bg-red-100 dark:bg-red-950',
-            iconColor : 'text-red-600 dark:text-red-400',
+            iconBg    : 'bg-red-100 bg-red-950',
+            iconColor : 'text-red-600 text-red-400',
             btnClass  : 'bg-red-500 hover:bg-red-600 focus-visible:ring-red-500',
             svg: `<svg class="popup-anim-svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                     <polyline points="3 6 5 6 21 6"/>
@@ -227,8 +226,8 @@
         custom: {
             accent    : '#6366f1',
             ring      : 'rgba(99,102,241,0.25)',
-            iconBg    : 'bg-indigo-100 dark:bg-indigo-950',
-            iconColor : 'text-indigo-600 dark:text-indigo-400',
+            iconBg    : 'bg-indigo-100 bg-indigo-950',
+            iconColor : 'text-indigo-600 text-indigo-400',
             btnClass  : 'bg-indigo-500 hover:bg-indigo-600 focus-visible:ring-indigo-500',
             svg: `<svg class="popup-anim-svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10"/>
@@ -323,12 +322,12 @@
         btn.textContent = text;
         btn.className = [
             'flex-1 py-3 px-5 cursor-pointer',
-            'border border-slate-200 dark:border-white/10',
-            'bg-slate-50 dark:bg-white/[0.05]',
-            'text-slate-600 dark:text-slate-400',
+            'border border-slate-200 border-white/10',
+            'bg-slate-50 bg-white/[0.05]',
+            'text-slate-600 text-slate-400',
             'text-sm font-bold',
             'transition-all duration-150',
-            'hover:bg-slate-100 dark:hover:bg-white/[0.09]',
+            'hover:bg-slate-100 hover:bg-white/[0.09]',
             'active:scale-[.98]',
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-slate-300',
         ].join(' ');
