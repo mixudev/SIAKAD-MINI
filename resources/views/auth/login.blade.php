@@ -42,7 +42,7 @@
         <div class="flex flex-col justify-center px-8 sm:px-14 py-14 sm:py-16">
           <div class="w-full max-w-sm mx-auto opacity-0 animate-fadeInUp [animation-delay:100ms]">
 
-            <a href="{{ route('home') }}" class="text-[16px] font-semibold tracking-[0.08em] text-stone-900 uppercase hover:text-amber-700 transition-colors duration-300">
+            <a href="{{ route('home') }}" class="text-[18px] font-bold tracking-[0.08em] text-stone-900 uppercase hover:text-amber-700 transition-colors duration-300">
               SIAKAD <span class="text-amber-700">APPS</span>
             </a>
 
