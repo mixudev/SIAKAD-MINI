@@ -21,7 +21,8 @@ class AiChatService
         $mahasiswa = $role === 'mahasiswa' ? $user->mahasiswa : null;
         $convId = $conversationId ?? (string) Str::uuid();
 
-        $messages = $this->promptBuilder->buildChatMessage($role, $message, $mahasiswa);
+        $history = $conversationId ? $this->getConversationHistory($conversationId, $user) : [];
+        $messages = $this->promptBuilder->buildChatMessage($role, $message, $mahasiswa, $history);
 
         $response = $this->aiService->chat($messages);
 
@@ -35,7 +36,8 @@ class AiChatService
         $role = $user->getRoleNames()->first() ?? 'unknown';
         $mahasiswa = $role === 'mahasiswa' ? $user->mahasiswa : null;
 
-        $messages = $this->promptBuilder->buildChatMessage($role, $message, $mahasiswa);
+        $history = $this->getConversationHistory($conversationId, $user);
+        $messages = $this->promptBuilder->buildChatMessage($role, $message, $mahasiswa, $history);
 
         $fullResponse = '';
 
@@ -45,6 +47,21 @@ class AiChatService
         });
 
         $this->logChat($user, $conversationId, $role, $message, $fullResponse);
+    }
+
+    protected function getConversationHistory(string $conversationId, User $user, int $limit = 5): array
+    {
+        return AiChatLog::byConversation($conversationId)
+            ->where('user_id', $user->id)
+            ->orderBy('created_at')
+            ->take($limit)
+            ->get()
+            ->map(fn ($log) => [
+                ['role' => 'user', 'content' => $log->message],
+                ['role' => 'assistant', 'content' => $log->response],
+            ])
+            ->flatten(1)
+            ->toArray();
     }
 
     public function getConversations(User $user): Collection

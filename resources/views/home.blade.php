@@ -13,53 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        serif: ['Newsreader', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': {
-                                opacity: '0',
-                                transform: 'translateY(20px)'
-                            },
-                            '100%': {
-                                opacity: '1',
-                                transform: 'translateY(0)'
-                            },
-                        },
-                        fadeIn: {
-                            '0%': {
-                                opacity: '0'
-                            },
-                            '100%': {
-                                opacity: '1'
-                            },
-                        },
-                        drawLine: {
-                            '0%': {
-                                transform: 'scaleY(0)'
-                            },
-                            '100%': {
-                                transform: 'scaleY(1)'
-                            },
-                        },
-                    },
-                    animation: {
-                        fadeInUp: 'fadeInUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
-                        fadeIn: 'fadeIn 1.2s ease-out forwards',
-                        drawLine: 'drawLine 1.1s cubic-bezier(0.16,1,0.3,1) forwards',
-                    },
-                },
-            },
-        }
-    </script>
+    @vite('resources/css/app.css')
 </head>
 
 <body class="bg-stone-50 text-stone-800 antialiased font-sans">

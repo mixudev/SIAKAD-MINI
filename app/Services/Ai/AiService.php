@@ -26,6 +26,7 @@ class AiService
     {
         return Http::withToken($this->apiKey)
             ->withoutVerifying()
+            ->withOptions(['verify' => false])
             ->timeout(60)
             ->connectTimeout(10)
             ->retry(2, 1000)
@@ -59,8 +60,15 @@ class AiService
         }
 
         $data = $response->json();
+        $content = $data['choices'][0]['message']['content'] ?? '';
 
-        return $data['choices'][0]['message']['content'] ?? '';
+        if (trim($content) === '') {
+            Log::warning('Groq API returned no assistant content', ['response' => $data]);
+
+            return 'Maaf, layanan AI sedang tidak tersedia. Silakan coba lagi nanti.';
+        }
+
+        return $content;
     }
 
     public function chatStream(array $messages, callable $callback, array $options = []): void

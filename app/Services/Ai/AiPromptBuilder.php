@@ -39,7 +39,7 @@ class AiPromptBuilder
         ];
 
         return [
-            ['role' => 'system', 'content' => 'Kamu adalah asisten AI akademik SIAKAD. WAJIB gunakan Bahasa Indonesia. Berikan insight singkat (maks 3 kalimat). JANGAN gunakan markdown, bold, atau list.'],
+            ['role' => 'system', 'content' => 'Kamu adalah asisten AI akademik SIAKAD. Gunakan Bahasa Indonesia baku dan profesional. Berikan insight singkat dan jelas maksimal 3 kalimat. Jangan gunakan markdown, teks tebal, atau daftar.'],
             ['role' => 'user', 'content' => 'Berdasarkan data berikut, buat insight dashboard untuk admin:'.json_encode($data)],
         ];
     }
@@ -61,7 +61,7 @@ class AiPromptBuilder
         ];
 
         return [
-            ['role' => 'system', 'content' => 'Kamu adalah asisten AI akademik SIAKAD. WAJIB gunakan Bahasa Indonesia. Berikan insight singkat (maks 3 kalimat). JANGAN gunakan markdown, bold, atau list.'],
+            ['role' => 'system', 'content' => 'Kamu adalah asisten AI akademik SIAKAD. Gunakan Bahasa Indonesia baku dan profesional. Berikan insight singkat dan jelas maksimal 3 kalimat. Jangan gunakan markdown, teks tebal, atau daftar.'],
             ['role' => 'user', 'content' => 'Buat insight dashboard untuk dosen berdasarkan data:'.json_encode($data)],
         ];
     }
@@ -93,9 +93,15 @@ class AiPromptBuilder
         ];
     }
 
-    public function buildChatMessage(string $role, string $message, ?Mahasiswa $mahasiswa = null): array
+    public function buildChatMessage(string $role, string $message, ?Mahasiswa $mahasiswa = null, array $history = []): array
     {
-        $context = 'Kamu adalah asisten AI akademik SIAKAD. WAJIB gunakan Bahasa Indonesia baku dan santun. Jawab SINGKAT maksimal 2-3 kalimat (50 kata). JANGAN gunakan markdown, bold, atau list.';
+        $context = 'Kamu adalah asisten AI akademik resmi SIAKAD (Sistem Informasi Akademik) yang profesional.
+Tugasmu hanya membantu pertanyaan seputar sistem akademik, seperti perkuliahan dan mata kuliah, nilai dan IPK, KRS dan pengisian KRS, informasi dosen dan mahasiswa, jadwal perkuliahan, SKS dan beban studi, rekomendasi akademik, serta data akademik lainnya yang ada dalam sistem SIAKAD.
+Gunakan Bahasa Indonesia formal dan profesional.
+Berikan jawaban yang informatif, jelas, dan mudah dipahami.
+Maksimal 3-4 kalimat per respons.
+JANGAN gunakan markdown, bold, atau list.
+Jika pengguna bertanya di luar topik sistem akademik SIAKAD (misalnya politik, olahraga, memasak, hiburan, berita umum, atau topik non-akademik lainnya), tolak dengan sopan dengan mengatakan bahwa kamu hanya dapat membantu pertanyaan seputar sistem akademik SIAKAD.';
 
         if ($role === 'mahasiswa' && $mahasiswa) {
             $semesterAktif = Semester::aktif();
@@ -114,15 +120,20 @@ class AiPromptBuilder
             $context .= "\n\nKamu membantu admin yang mengelola seluruh sistem SIAKAD.";
         }
 
-        return [
-            ['role' => 'system', 'content' => $context],
-            ['role' => 'user', 'content' => $message],
-        ];
+        $messages = [['role' => 'system', 'content' => $context]];
+
+        foreach (array_slice($history, -10) as $hist) {
+            $messages[] = $hist;
+        }
+
+        $messages[] = ['role' => 'user', 'content' => $message];
+
+        return $messages;
     }
 
     public function buildGradeAnalysis(KelasMatkul $kelasMatkul): array
     {
-        $nilaiList = $kelasMatkul->nilai()->with('mahasiswa')->get();
+        $nilaiList = $kelasMatkul->nilais()->with('mahasiswa')->get();
         $total = $nilaiList->count();
         $terisi = $nilaiList->whereNotNull('nilai_akhir')->count();
 
@@ -159,8 +170,8 @@ class AiPromptBuilder
         }
 
         return [
-            ['role' => 'system', 'content' => 'Kamu adalah asisten AI akademik SIAKAD untuk dosen. WAJIB gunakan Bahasa Indonesia. Analisis data nilai kelas maks 5 kalimat. JANGAN gunakan markdown, bold, atau list.'],
-            ['role' => 'user', 'content' => 'Analisis data nilai kelas ini:'.json_encode($rawData)],
+            ['role' => 'system', 'content' => 'Kamu adalah asisten AI akademik SIAKAD untuk dosen. Gunakan Bahasa Indonesia baku dan profesional. Analisis data nilai kelas secara ringkas, jelaskan kinerja umum, area perbaikan, dan rekomendasi singkat. Jangan gunakan markdown, teks tebal, atau daftar.'],
+            ['role' => 'user', 'content' => 'Analisis data nilai kelas berikut secara profesional:'.json_encode($rawData)],
         ];
     }
 }

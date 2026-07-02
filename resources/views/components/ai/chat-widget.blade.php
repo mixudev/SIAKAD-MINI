@@ -45,6 +45,13 @@
                             <div x-show="$store.chat.conversations.length === 0" class="text-center py-4 text-xs text-slate-400">
                                 Belum ada riwayat
                             </div>
+                            <div class="border-t border-slate-100 my-1"></div>
+                            <button
+                                @click="$store.chat.clearChat(); open = false"
+                                class="w-full text-left px-3 py-2 text-xs text-red-500 hover:bg-red-50 transition-colors flex items-center gap-2"
+                            >
+                                <i class="fa-solid fa-trash-can"></i>Hapus Semua Chat
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -201,14 +208,48 @@ document.addEventListener('alpine:init', () => {
         isWaiting: false,
         isStreaming: false,
         input: '',
+        STORAGE_KEY: 'siakad_chat_state',
 
         init() {
+            this.restoreFromStorage();
             this.loadConversations();
+        },
+
+        saveToStorage() {
+            try {
+                localStorage.setItem(this.STORAGE_KEY, JSON.stringify({
+                    messages: this.messages,
+                    conversationId: this.conversationId,
+                }));
+            } catch (e) {
+                // storage full or unavailable
+            }
+        },
+
+        restoreFromStorage() {
+            try {
+                const saved = localStorage.getItem(this.STORAGE_KEY);
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    this.messages = data.messages || [];
+                    this.conversationId = data.conversationId || null;
+                }
+            } catch (e) {
+                // corrupted data
+            }
+        },
+
+        clearChat() {
+            this.messages = [];
+            this.conversationId = null;
+            localStorage.removeItem(this.STORAGE_KEY);
+            Alpine.nextTick(() => this.scrollToBottom());
         },
 
         newChat() {
             this.messages = [];
             this.conversationId = crypto.randomUUID();
+            this.saveToStorage();
             Alpine.nextTick(() => this.scrollToBottom());
         },
 
@@ -237,6 +278,7 @@ document.addEventListener('alpine:init', () => {
                     }
                     this.messages.push({ role: 'assistant', content: m.response });
                 });
+                this.saveToStorage();
                 Alpine.nextTick(() => this.scrollToBottom());
             } catch (e) {
                 this.messages.push({ role: 'assistant', content: 'Gagal memuat riwayat chat.' });
@@ -256,6 +298,7 @@ document.addEventListener('alpine:init', () => {
             this.isWaiting = true;
             this.isStreaming = true;
             this.scrollToBottom();
+            this.saveToStorage();
 
             try {
                 const response = await fetch('{{ route("ai.chat") }}', {
@@ -286,6 +329,7 @@ document.addEventListener('alpine:init', () => {
                         if (!aiMsg.content) {
                             aiMsg.content = 'Maaf, tidak ada respons. Silakan coba lagi.';
                         }
+                        this.saveToStorage();
                         await this.loadConversations();
                         this.scrollToBottom();
                         return;
@@ -326,6 +370,7 @@ document.addEventListener('alpine:init', () => {
                 }
                 this.isStreaming = false;
                 this.isWaiting = false;
+                this.saveToStorage();
                 this.scrollToBottom();
             }
         },

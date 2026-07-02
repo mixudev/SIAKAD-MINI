@@ -1,8 +1,10 @@
 <div
     x-data="{ open: false }"
+    x-init="open = localStorage.getItem('siakad_chat_open') === 'true'; $watch('open', val => localStorage.setItem('siakad_chat_open', val))"
     @chat-close.window="open = false"
     @toggle-chat-bubble.window="open = !open"
     class="fixed bottom-5 right-5 z-50"
+    x-cloak
 >
     <!-- Chat Panel -->
     <div
