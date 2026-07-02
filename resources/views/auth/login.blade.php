@@ -104,13 +104,13 @@
                 >
               </div>
 
-              <label class="flex items-center gap-3 cursor-pointer group">
+              {{-- <label class="flex items-center gap-3 cursor-pointer group">
                 <input type="checkbox" name="remember" class="peer sr-only">
                 <span class="w-4 h-4 border border-stone-300 flex items-center justify-center peer-checked:bg-stone-900 peer-checked:border-stone-900 transition-colors duration-300">
                   <span class="w-2 h-2 bg-stone-50 scale-0 peer-checked:scale-100 transition-transform duration-200"></span>
                 </span>
                 <span class="text-sm text-stone-500 group-hover:text-stone-900 transition-colors duration-300">Ingat saya di perangkat ini</span>
-              </label>
+              </label> --}}
 
               <button
                 type="submit"
