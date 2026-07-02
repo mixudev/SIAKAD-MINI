@@ -5,17 +5,15 @@
         "api/index.php": { "runtime": "vercel-php@0.6.0" }
     },
     "routes": [
-        { "src": "/build/(.*)", "dest": "/public/build/" },
+        { "src": "/build/(.*)", "dest": "/public/build/$1" },
         { "src": "/(.*)", "dest": "/api/index.php" }
     ],
-    "public": true,
     "buildCommand": "vite build",
     "outputDirectory": "public",
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "false",
         "APP_URL": "https://siakad-wutwutwut.vercel.app",
-        "APP_KEY": "base64:UrioLvZ9YKRgACY2SvqxvIJ6lvphxxf6rL7sGw0Ohuo=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
@@ -29,6 +27,5 @@
         "DB_HOST": "aws-1-ap-southeast-2.pooler.supabase.com",
         "DB_PORT": "5432",
         "DB_DATABASE": "postgres",
-        "DB_USERNAME": "postgres.dycprgfunathhdqwfmjg"
     }
 }
