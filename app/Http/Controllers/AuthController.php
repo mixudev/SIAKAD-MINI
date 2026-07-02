@@ -47,7 +47,7 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended($this->redirectTo($user));
+        return redirect($this->redirectTo($user));
     }
 
     public function logout(Request $request): RedirectResponse
