@@ -1,8 +1,9 @@
 {
     "$schema": "https://openapi.vercel.sh/vercel.json",
+    "version": 2,
+    "framework": null,
 
     "regions": ["bom1"],
-    "outputDirectory": "public",
 
     "functions": {
         "api/index.php": {
@@ -10,12 +11,19 @@
         }
     },
 
-    "rewrites": [
+    "outputDirectory": "public",
+
+    "routes": [
         {
-        "source": "/(.*)",
-        "destination": "/api/index.php"
+            "src": "/build/(.*)",
+            "dest": "/build/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/api/index.php"
         }
     ],
+
     "env": {
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
