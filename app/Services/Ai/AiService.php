@@ -9,27 +9,52 @@ use Illuminate\Support\Facades\Log;
 
 class AiService
 {
+    protected string $provider;
+
     protected string $apiKey;
 
     protected string $baseUrl;
 
     protected string $model;
 
+    protected array $extraHeaders = [];
+
     public function __construct()
     {
-        $this->apiKey = config('ai.groq.api_key');
-        $this->baseUrl = config('ai.groq.base_url');
-        $this->model = config('ai.groq.model');
+        if (config('ai.providers.openrouter.api_key')) {
+            $this->provider = 'openrouter';
+        } elseif (config('ai.providers.groq.api_key')) {
+            $this->provider = 'groq';
+        } else {
+            $this->provider = 'groq';
+        }
+
+        $this->apiKey = config("ai.providers.{$this->provider}.api_key");
+        $this->baseUrl = config("ai.providers.{$this->provider}.base_url");
+        $this->model = config("ai.providers.{$this->provider}.model");
+
+        if ($this->provider === 'openrouter') {
+            $this->extraHeaders = [
+                'HTTP-Referer' => config('app.url'),
+                'X-Title' => config('app.name'),
+            ];
+        }
+    }
+
+    public function getProvider(): string
+    {
+        return $this->provider;
     }
 
     protected function client(): PendingRequest
     {
         return Http::withToken($this->apiKey)
+            ->withHeaders($this->extraHeaders)
             ->withoutVerifying()
             ->withOptions(['verify' => false])
             ->timeout(60)
             ->connectTimeout(10)
-            ->retry(2, 1000)
+            ->retry(2, 1000, null, false)
             ->withHeader('Content-Type', 'application/json');
     }
 
@@ -45,13 +70,13 @@ class AiService
         try {
             $response = $this->client()->post("{$this->baseUrl}/chat/completions", $payload);
         } catch (ConnectionException $e) {
-            Log::error('Groq API connection error', ['error' => $e->getMessage()]);
+            Log::error("{$this->provider} API connection error", ['error' => $e->getMessage()]);
 
             return 'Maaf, layanan AI sedang tidak tersedia. Silakan coba lagi nanti.';
         }
 
         if ($response->failed()) {
-            Log::error('Groq API error', [
+            Log::error("{$this->provider} API error", [
                 'status' => $response->status(),
                 'body' => $response->body(),
             ]);
@@ -63,7 +88,7 @@ class AiService
         $content = $data['choices'][0]['message']['content'] ?? '';
 
         if (trim($content) === '') {
-            Log::warning('Groq API returned no assistant content', ['response' => $data]);
+            Log::warning("{$this->provider} API returned no assistant content", ['response' => $data]);
 
             return 'Maaf, layanan AI sedang tidak tersedia. Silakan coba lagi nanti.';
         }
@@ -86,14 +111,14 @@ class AiService
                 ->withOptions(['stream' => true])
                 ->post("{$this->baseUrl}/chat/completions", $payload);
         } catch (ConnectionException $e) {
-            Log::error('Groq API streaming connection error', ['error' => $e->getMessage()]);
+            Log::error("{$this->provider} API streaming connection error", ['error' => $e->getMessage()]);
             $callback('Maaf, layanan AI sedang tidak tersedia.');
 
             return;
         }
 
         if ($response->failed()) {
-            Log::error('Groq API streaming error', [
+            Log::error("{$this->provider} API streaming error", [
                 'status' => $response->status(),
                 'body' => $response->body(),
             ]);
