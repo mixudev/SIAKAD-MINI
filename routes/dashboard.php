@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AkunController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\DosenController;
+use App\Http\Controllers\Admin\JadwalController as AdminJadwalController;
 use App\Http\Controllers\Admin\KelasMatkulController;
 use App\Http\Controllers\Admin\KhsMahasiswaController;
 use App\Http\Controllers\Admin\KrsApprovalController;
@@ -14,8 +15,10 @@ use App\Http\Controllers\Ai\ChatController;
 use App\Http\Controllers\Ai\ChatPageController;
 use App\Http\Controllers\Ai\InsightController;
 use App\Http\Controllers\Dosen\DashboardController as DosenDashboardController;
+use App\Http\Controllers\Dosen\JadwalController as DosenJadwalController;
 use App\Http\Controllers\Dosen\NilaiController;
 use App\Http\Controllers\Mahasiswa\DashboardController as MahasiswaDashboardController;
+use App\Http\Controllers\Mahasiswa\JadwalController as MahasiswaJadwalController;
 use App\Http\Controllers\Mahasiswa\KhsController;
 use App\Http\Controllers\Mahasiswa\KrsController;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +53,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('nilai', [AdminNilaiController::class, 'index'])->name('nilai.index');
 
         Route::get('khs', [KhsMahasiswaController::class, 'index'])->name('khs.index');
+
+        Route::get('jadwal', [AdminJadwalController::class, 'index'])->name('jadwal.index');
     });
 
     Route::middleware(['role:mahasiswa'])->prefix('mahasiswa')->name('mahasiswa.')->group(function () {
@@ -62,6 +67,8 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('khs', [KhsController::class, 'index'])->name('khs.index');
         Route::get('khs/{semester}', [KhsController::class, 'show'])->name('khs.show');
+
+        Route::get('jadwal', [MahasiswaJadwalController::class, 'index'])->name('jadwal.index');
     });
 
     Route::middleware(['role:dosen'])->prefix('dosen')->name('dosen.')->group(function () {
@@ -70,5 +77,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('nilai', [NilaiController::class, 'index'])->name('nilai.index');
         Route::get('nilai/{kelasMatkul}', [NilaiController::class, 'edit'])->name('nilai.edit');
         Route::put('nilai/{kelasMatkul}', [NilaiController::class, 'update'])->name('nilai.update');
+
+        Route::get('jadwal', [DosenJadwalController::class, 'index'])->name('jadwal.index');
     });
 });

@@ -55,6 +55,12 @@
                 <span class="text-sm">Kelas Matkul</span>
             </a>
 
+            <a href="{{ route('admin.jadwal.index') }}"
+                class="flex items-center gap-3 px-3 py-2.5 {{ request()->routeIs('admin.jadwal.*') ? 'text-white bg-slate-700 border-l-4 border-slate-300' : 'text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500' }} group transition-all duration-200">
+                <i class="fa-solid fa-calendar-days w-4"></i>
+                <span class="text-sm">Jadwal</span>
+            </a>
+
             <p class="text-slate-500 text-xs font-semibold tracking-widest uppercase px-3 pt-4 pb-1">Akademik</p>
 
             <a href="{{ route('admin.krs.index') }}"
@@ -86,6 +92,11 @@
                 <i class="fa-solid fa-clipboard-list w-4"></i>
                 <span class="text-sm">KRS</span>
             </a>
+            <a href="{{ route('mahasiswa.jadwal.index') }}"
+                class="flex items-center gap-3 px-3 py-2.5 {{ request()->routeIs('mahasiswa.jadwal.*') ? 'text-white bg-slate-700 border-l-4 border-slate-300' : 'text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500' }} group transition-all duration-200">
+                <i class="fa-solid fa-calendar-days w-4"></i>
+                <span class="text-sm">Jadwal</span>
+            </a>
             <a href="{{ route('mahasiswa.khs.index') }}"
                 class="flex items-center gap-3 px-3 py-2.5 {{ request()->routeIs('mahasiswa.khs.*') ? 'text-white bg-slate-700 border-l-4 border-slate-300' : 'text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500' }} group transition-all duration-200">
                 <i class="fa-solid fa-star-half-stroke w-4"></i>
@@ -100,6 +111,11 @@
                 <span class="text-sm font-semibold">Dashboard</span>
             </a>
 
+            <a href="{{ route('dosen.jadwal.index') }}"
+                class="flex items-center gap-3 px-3 py-2.5 {{ request()->routeIs('dosen.jadwal.*') ? 'text-white bg-slate-700 border-l-4 border-slate-300' : 'text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500' }} group transition-all duration-200">
+                <i class="fa-solid fa-calendar-days w-4"></i>
+                <span class="text-sm">Jadwal</span>
+            </a>
             <a href="{{ route('dosen.nilai.index') }}"
                 class="flex items-center gap-3 px-3 py-2.5 {{ request()->routeIs('dosen.nilai.*') ? 'text-white bg-slate-700 border-l-4 border-slate-300' : 'text-slate-300 border-l-4 border-transparent hover:bg-slate-900 hover:text-white hover:border-slate-500' }} group transition-all duration-200">
                 <i class="fa-solid fa-star-half-stroke w-4"></i>
