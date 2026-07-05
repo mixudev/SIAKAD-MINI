@@ -301,7 +301,7 @@ document.addEventListener('alpine:init', () => {
             this.saveToStorage();
 
             try {
-                const response = await fetch('{{ route("ai.chat") }}', {
+                const response = await fetch('{{ route("ai.chat.send") }}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

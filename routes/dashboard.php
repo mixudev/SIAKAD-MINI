@@ -26,7 +26,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('insight', [InsightController::class, 'index'])->name('insight');
         Route::get('conversations', [ChatController::class, 'conversations'])->name('conversations');
         Route::get('conversations/{conversationId}', [ChatController::class, 'history'])->name('conversations.history');
-        Route::post('chat', [ChatController::class, 'send'])->name('chat');
+        Route::post('chat', [ChatController::class, 'send'])->name('chat.send');
         Route::get('analyze-grade/{kelasMatkul}', [InsightController::class, 'analyzeGrade'])->name('analyze-grade');
     });
 
